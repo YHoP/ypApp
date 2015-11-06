@@ -1,4 +1,4 @@
-package com.epicodus.ypapp;
+package com.epicodus.ypapp.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.epicodus.ypapp.R;
 import com.parse.ParseObject;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "lunch");
+        testObject.put("foo", "dinner");
         testObject.saveInBackground();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
