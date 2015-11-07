@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:2:1-39:12
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml
@@ -21,8 +21,16 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:6:5-79
 	android:name
 		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:7:22-78
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:8:5-97
+	android:name
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:8:22-95
 application
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:8:5-37:19
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:10:5-39:19
 MERGED from [com.android.support:appcompat-v7:23.1.0] /Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.0] /Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.0] /Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/AndroidManifest.xml:22:5-20
@@ -31,55 +39,55 @@ MERGED from [com.android.support:support-v4:23.1.0] /Users/YHoP/AndroidStudioPro
 MERGED from [com.android.support:support-v4:23.1.0] /Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.0] /Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:12:9-41
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:14:9-41
 	android:supportsRtl
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:13:9-35
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:15:9-35
 	android:allowBackup
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:12:9-35
 	android:icon
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:13:9-43
 	android:theme
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:16:9-40
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:9:9-49
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:11:9-49
 meta-data#com.parse.APPLICATION_ID
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:15:9-17:52
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:17:9-19:52
 	android:value
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:17:13-49
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:19:13-49
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:16:13-52
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:18:13-52
 meta-data#com.parse.CLIENT_KEY
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:18:9-20:56
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:20:9-22:56
 	android:value
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:20:13-53
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:22:13-53
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:19:13-48
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:21:13-48
 activity#com.epicodus.ypapp.ui.MainActivity
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:22:9-31:20
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:24:9-33:20
 	android:label
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:24:13-45
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:26:13-45
 	android:theme
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:25:13-56
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:27:13-56
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:23:13-44
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:25:13-44
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:26:13-30:29
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:27:17-69
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:27:25-66
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:29:17-77
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:29:27-74
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:31:27-74
 activity#com.epicodus.ypapp.ui.LoginActivity
-ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:32:9-36:20
+ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:34:9-38:20
 	android:label
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:34:13-57
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:36:13-57
 	android:theme
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:35:13-56
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:37:13-56
 	android:name
-		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:33:13-45
+		ADDED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml:35:13-45
 uses-sdk
 INJECTED from /Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.0] /Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/AndroidManifest.xml:20:5-43
