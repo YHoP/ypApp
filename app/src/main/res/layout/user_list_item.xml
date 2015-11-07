@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/userImage"
+        android:src="@android:drawable/ic_menu_camera"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:id="@+id/userNameText"
+        android:textSize="26sp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/userImage"
+        android:layout_toEndOf="@+id/userImage"
+        android:layout_margin="10dp"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/userNameText"
+        android:layout_toRightOf="@+id/userImage"
+        android:layout_toEndOf="@+id/userImage"
+        android:layout_alignBottom="@+id/userImage"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/locationText"
+            android:textSize="18sp"
+            android:text="Portland, OR"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/routeCountText"
+            android:textSize="18sp"
+            android:text="8 Routes"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>
