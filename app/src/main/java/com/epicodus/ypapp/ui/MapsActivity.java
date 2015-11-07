@@ -14,22 +14,19 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity {
 
-//    @Bind(R.id.editLocation) EditText editLocation;
-    private GoogleMap mMap;
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+    public GoogleMap mMap;
     private double lat = 45.52;
     private double lng = -122.68;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ButterKnife.bind(this);
 
         if (servicesOK()) {
             setContentView(R.layout.activity_maps);
@@ -45,14 +42,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             setContentView(R.layout.activity_main);
         }
     }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        LatLng epicodus = new LatLng(lat, lng);
-        mMap.addMarker(new MarkerOptions().position(epicodus).title("Marker in Epicodus"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(epicodus));
-    }
+//    @Override
+//    public void onMapReady(GoogleMap map) {
+//        LatLng epicodus = new LatLng(lat, lng);
+//
+//        mMap.setMyLocationEnabled(true);
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(epicodus, 13));
+//
+//        mMap.addMarker(new MarkerOptions()
+//                .title("Epicodus")
+//                .snippet("The coding school in Portland.")
+//                .position(epicodus));
+//    }
 
     public boolean servicesOK() {
 
@@ -62,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return true;
         } else if (GooglePlayServicesUtil.isUserRecoverableError(isAvailable)) {
             Dialog dialog =
-                    GooglePlayServicesUtil.getErrorDialog(isAvailable, this, 9001);
+                    GooglePlayServicesUtil.getErrorDialog(isAvailable, this, ERROR_DIALOG_REQUEST);
             dialog.show();
         } else {
             Toast.makeText(this, "Can't connect to mapping service", Toast.LENGTH_SHORT).show();
@@ -73,9 +75,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private boolean initMap() {
         if (mMap == null) {
-            SupportMapFragment mapFragment =
-                    (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-            mMap = mapFragment.getMap();
+            MapFragment mapFragment = (MapFragment) getFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMap();
 
         }
         return (mMap != null);
