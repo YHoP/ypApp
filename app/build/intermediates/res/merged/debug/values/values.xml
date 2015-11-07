@@ -375,6 +375,7 @@
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_maps">Google Maps</string>
+    <string name="action_web">Strava Heat Map</string>
     <string name="app_name">ypApp</string>
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/values/values.xml -->
     <eat-comment/>

@@ -1,6 +1,7 @@
 package com.epicodus.ypapp.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,10 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 goToLoginActivity();
                 finish();
             } else {
-                Toast.makeText(this, currentUser.getUsername(), Toast.LENGTH_LONG).show();
-//                ParseObject testObject = new ParseObject("Routes");
-//                testObject.put("name", "Eagle Creek run");
-//                testObject.saveInBackground();
+                Toast.makeText(this, currentUser.getString("username"), Toast.LENGTH_LONG).show();
             }
         }
 
@@ -68,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case  R.id.action_web:
+                Uri heatMap = Uri.parse("http://labs.strava.com/heatmap/");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, heatMap);
+                startActivity(webIntent);
+                break;
             case  R.id.action_maps:
                 Intent mapIntent = new Intent(this, MapsActivity.class);
                 startActivity(mapIntent);

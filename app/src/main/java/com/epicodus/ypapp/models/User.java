@@ -35,8 +35,6 @@ public class User extends Model{
     @Column(name = "imageId")
     private int mImageId;
 
-
-
     public User(){
         super();
     }
