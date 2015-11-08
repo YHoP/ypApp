@@ -10,10 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.epicodus.ypapp.R;
@@ -37,13 +35,17 @@ public class AddRouteActivity extends AppCompatActivity {
     @Bind(R.id.editName) EditText mEditName;
     @Bind(R.id.editLocation) EditText mEditLocation;
     @Bind(R.id.editDistance) EditText mEditDistance;
-    @Bind(R.id.editDate) DatePicker mEditDate;
-    @Bind(R.id.editStartTime) TimePicker mEditStartTime;
-    @Bind(R.id.editFinishTime) TimePicker mEditFinishTime;
+    @Bind(R.id.editDate) EditText mEditDate;
+    @Bind(R.id.editStartTime) EditText mEditStartTime;
+    @Bind(R.id.editFinishTime) EditText mEditFinishTime;
+//    @Bind(R.id.editDate) DatePicker mEditDate;
+//    @Bind(R.id.editStartTime) TimePicker mEditStartTime;
+//    @Bind(R.id.editFinishTime) TimePicker mEditFinishTime;
     @Bind(R.id.btnSubmit) Button mBtnSubmit;
     @Bind(R.id.imgRoute) ImageView mImgRoute;
 
     Route mRoute;
+    String imageId;
 
 
     @Override
@@ -67,7 +69,7 @@ public class AddRouteActivity extends AppCompatActivity {
                 Date startTime = timeFormatter(mEditStartTime.getText().toString());
                 Date finishTime = timeFormatter(mEditFinishTime.getText().toString());
 
-                Route thisRoute = new Route(name, location, distance, startTime, finishTime);
+                mRoute = new Route(name, location, distance, startTime, finishTime);
 
                 // mEditStartTime.setIs24HourView(true);
                 // mEditFinishTime.setIs24HourView(true);
@@ -123,15 +125,14 @@ public class AddRouteActivity extends AppCompatActivity {
                 Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
                 mImgRoute.setImageBitmap(bitmapImage);
-                Log.i("Select image: ", String.valueOf(R.string.succeed));
+                Log.i("Select image: ", "Succeed");
 
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmapImage.compress(Bitmap.CompressFormat.PNG, 20, stream);
+                bitmapImage.compress(Bitmap.CompressFormat.JPEG, 20, stream);
 
                 byte[] byteArray = stream.toByteArray();
 
-                String imgName =  mRoute.getId() + ".png";
-                ParseFile file = new ParseFile(imgName, byteArray);
+                ParseFile file = new ParseFile("image.png", byteArray);
 
                 ParseObject object = new ParseObject("RouteImage");
                 object.put("image", file);
@@ -143,7 +144,7 @@ public class AddRouteActivity extends AppCompatActivity {
                     @Override
                     public void done(com.parse.ParseException e) {
                         if( e == null) {
-                            Log.i("Save image", String.valueOf(R.string.succeed));
+                            Log.i("Save image", "Succeed");
                         } else {
                             Toast.makeText(getApplication().getBaseContext(), "Error! Please try again", Toast.LENGTH_LONG).show();
                         }
