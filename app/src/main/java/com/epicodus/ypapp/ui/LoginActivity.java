@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
 import com.epicodus.ypapp.models.User;
+import com.epicodus.ypapp.models.User_sql;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -70,6 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = String.valueOf(mTxtPassword.getText());
         if(signUpModeActive) {
             User user = new User(username, password);
+            User_sql user_sql = new User_sql(username, password);
             user.signUp();
             goToMainActivity();
         } else {

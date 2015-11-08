@@ -1,122 +1,68 @@
 package com.epicodus.ypapp.models;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
 import com.parse.ParseObject;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  * Created by YHoP on 10/27/15.
  */
-@Table(name = "Routes", id = "_id")
-public class Route extends Model {
+
+public class Route {
     ParseObject mRouteObject;
 
-    @Column(name = "name")
-    private String mName;
-
-    @Column(name = "date")
-    private String mDate;
-
-    @Column(name = "location")
-    private String mLocation;
-
-    @Column(name = "distance")
-    private double mDistance;
-
-    @Column(name = "totalTime")
-    private double mTotalTime;
-
-    @Column(name = "pace")
-    private double mPace;
-
-    @Column(name = "mapId")
-    private int mMapId;
-
-    @Column(name = "userName")
-    private String mUserName;
-
-    public Route(){
-        super();
-    }
-
-    public Route(String name, String date, String location, double distance, double totalTime){
+    public Route(String name, String location, Number distance, Date startTime, Date finishTime){
         mRouteObject = new ParseObject("Routes");
         mRouteObject.put("name", name);
-        mName = name;
-        mRouteObject.put("date", date);
-        mDate = date;
         mRouteObject.put("location", location);
-        mLocation = location;
-        mRouteObject.put("distance", String.valueOf(distance));
-        mDistance = distance;
-        mRouteObject.put("totalTime", String.valueOf(totalTime));
-        mTotalTime = totalTime;
+        mRouteObject.put("distance", distance);
+        mRouteObject.put("startTime", startTime);
+        mRouteObject.put("finishTime", finishTime);
         mRouteObject.saveInBackground();
     }
 
     public String getName() {
-        return mName;
+        return mRouteObject.getString("name");
     }
 
     public void setName(String name) {
-        mName = name;
+        mRouteObject.put("name", name);
     }
 
-    public String getDate() { return mDate;}
+    public Date getDate() {
+        return mRouteObject.getDate("startTime");
+    }
 
-    public void setDate(String date) { mDate = date; }
+    public void setDate(Date date) {
+        mRouteObject.put("date", date);
+    }
 
     public String getLocation() {
-        return mLocation;
+        return mRouteObject.getString("location");
     }
 
     public void setLocation(String location) {
-        mLocation = location;
+        mRouteObject.put("location", location);
     }
 
-    public double getDistance() {
-        return mDistance;
+    public Number getDistance() {
+        return mRouteObject.getNumber("distance");
     }
 
     public void setDistance(long distance) {
-        mDistance = distance;
+        mRouteObject.put("distance", distance);
     }
 
-    public double getTotalTime() {
-        return mTotalTime;
+    public Date getStartTime() {
+        return mRouteObject.getDate("startTime");
     }
 
-    public void setTotalTime(long totalTime) {
-        mTotalTime = totalTime;
+    public void setStartTime(Date startTime) {
+        mRouteObject.put("startTime", startTime);
     }
 
-    public int getMapId() { return mMapId; }
-
-    public void setMapId(int mapId) { mMapId = mapId; }
-
-    public String getUser() {
-        return mUserName;
+    public Date getFinishTime() {
+        return mRouteObject.getDate("finishTime");
     }
 
-    public void setUser(String userName) {
-        mUserName = userName;
-    }
-
-
-    public static List<Route> all(){
-        return new Select()
-                .from(Route.class)
-                .execute();
-    }
-
-    public static Route find(String location) {
-        return new Select()
-                .from(Route.class)
-                .where("Location = ?", location)
-                .executeSingle();
-    }
 }
