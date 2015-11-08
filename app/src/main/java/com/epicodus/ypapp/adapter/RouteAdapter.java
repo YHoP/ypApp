@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
-import com.epicodus.ypapp.models.Route;
+import com.epicodus.ypapp.models.Route_sql;
 
 import java.util.ArrayList;
 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class RouteAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<Route> mRoutes;
+    private ArrayList<Route_sql> mRoutes;
 
-    public RouteAdapter(Context context, ArrayList<Route> routes) {
+    public RouteAdapter(Context context, ArrayList<Route_sql> routes) {
         mContext = context;
         mRoutes = routes;
     }
@@ -63,14 +63,14 @@ public class RouteAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Route route = mRoutes.get(position);
+        Route_sql route = mRoutes.get(position);
 
-        holder.routeMapImage.setImageResource(route.getMapId());
+//        holder.routeMapImage.setImageResource(route.getMapId());
         holder.routeText.setText(route.getName());
         holder.dateText.setText(route.getLocation());
         holder.distanceText.setText(String.valueOf(route.getDistance()));
-        holder.totalTimeText.setText(String.valueOf(route.getTotalTime()));
-        holder.paceText.setText(String.valueOf(route.getTotalTime()/route.getDistance()));
+//        holder.totalTimeText.setText(String.valueOf(route.getTotalTime()));
+//        holder.paceText.setText(String.valueOf(route.getTotalTime()/route.getDistance()));
 
         return convertView;
     }

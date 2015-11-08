@@ -374,6 +374,8 @@
     <string name="accept">Accept</string>
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="action_friend">Friends</string>
+    <string name="action_logout">Log out</string>
     <string name="action_maps">Google Maps</string>
     <string name="action_web">Strava Heat Map</string>
     <string name="app_name">ypApp</string>
@@ -472,10 +474,12 @@
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="succeed">Succeed</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_add_route">New Route</string>
+    <string name="title_activity_login">Login</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
-    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_route">Route</string>
+    <string name="title_activity_scrolling">Scrolling</string>
+    <string name="title_activity_user">User</string>
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.3.0/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>

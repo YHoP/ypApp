@@ -13,7 +13,7 @@ import java.util.List;
  * Created by YHoP on 11/6/15.
  */
 
-@Table(name = "Users", id = "_id")
+@Table(name = "Users_sql", id = "_id")
 public class User_sql extends Model{
     ParseUser mParseUser;
 
@@ -80,16 +80,17 @@ public class User_sql extends Model{
                 .executeSingle();
     }
 
-    public List<Route> getRoutes(){
+    public List<Route_sql> getRoutes(){
         List<UserRoute> joins = new Select()
                 .from(UserRoute.class)
                 .where("User = ?", this.getId())
                 .execute();
 
-        List<Route> routes = new ArrayList<>();
+        List<Route_sql> routes = new ArrayList<Route_sql>();
 
         for(UserRoute join : joins){
-            routes.add(join.mRoute);
+            Route_sql route = join.getRoute();
+            routes.add(route);
         }
         return routes;
     }

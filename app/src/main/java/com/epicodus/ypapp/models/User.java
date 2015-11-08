@@ -2,48 +2,20 @@ package com.epicodus.ypapp.models;
 
 import android.util.Log;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
 import com.epicodus.ypapp.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by YHoP on 11/6/15.
  */
 
-@Table(name = "Users", id = "_id")
-public class User extends Model{
+public class User{
     ParseUser mParseUser;
 
-    @Column(name = "userName")
-    private String mUserName;
-
-    @Column(name = "password")
-    private String mPassword;
-
-    @Column(name = "location")
-    private String mLocation;
-
-    @Column(name = "imageId")
-    private int mImageId;
-
-    public User(){
-        super();
-    }
-
     public User(String username, String password) {
-        super();
-        mUserName = username;
-        mPassword = password;
-
         mParseUser = new ParseUser();
         mParseUser.setUsername(username);
         mParseUser.setPassword(password);
@@ -77,66 +49,36 @@ public class User extends Model{
         });
     }
 
-//    public String getParseUserName() {
-//        return mParseUser.getString("username");
-//    }
-
     public String getUserName() {
-        return mUserName;
+        return mParseUser.getString("username");
     }
 
     public void setUserName(String username) {
-        mUserName = username;
         mParseUser.setUsername(username);
     }
 
     public void setPassword(String password) {
         mParseUser.setPassword(password);
-        mPassword = password;
     }
 
     public String getLocation() {
-        return mLocation;
+        return mParseUser.getString("location");
     }
 
     public void setLocation(String location) {
-        mLocation = location;
+        mParseUser.put("location", location);
     }
 
-    public int getImageId() {
-        return mImageId;
+    /*
+    public String getImageId() {
+        return mParseUser.getString("imageId");
     }
 
-    public void setImageId(int imageId) {
-        mImageId = imageId;
+    public void setImageId(String imageId) {
+        mParseUser.put("imageId", imageId);
     }
+    */
 
-    public static List<User> all(){
-        return new Select()
-                .from(User.class)
-                .execute();
-    }
 
-    public static User find(String username) {
-        return new Select()
-                .from(User.class)
-                .where("Name = ?", username)
-                .executeSingle();
-    }
-
-    public List<Route> getRoutes(){
-        List<UserRoute> joins = new Select()
-                .from(UserRoute.class)
-                .where("User = ?", this.getId())
-                .execute();
-
-        List<Route> routes = new ArrayList<>();
-
-        for(UserRoute join : joins){
-            routes.add(join.mRoute);
-        }
-
-        return routes;
-    }
 }
 

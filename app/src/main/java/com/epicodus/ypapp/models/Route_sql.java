@@ -6,12 +6,13 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 import com.parse.ParseObject;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by YHoP on 10/27/15.
  */
-@Table(name = "Routes", id = "_id")
+@Table(name = "Routes_sql", id = "_id")
 public class Route_sql extends Model {
     ParseObject mRouteObject;
 
@@ -25,27 +26,26 @@ public class Route_sql extends Model {
     private String mLocation;
 
     @Column(name = "distance")
-    private double mDistance;
+    private Number mDistance;
 
-    @Column(name = "totalTime")
-    private double mTotalTime;
+    @Column(name = "startTime")
+    private Date mStartTime;
 
-    @Column(name = "pace")
-    private double mPace;
+    @Column(name = "finishTime")
+    private Date mFinishTime;
 
-    @Column(name = "imageId")
-    private int mMapId;
 
     public Route_sql(){
         super();
     }
 
-    public Route_sql(String name, String date, String location, double distance, double totalTime){
+    public Route_sql(String name, String date, String location, Number distance, Date startTime, Date finishTime){
         mName = name;
         mDate = date;
         mLocation = location;
         mDistance = distance;
-        mTotalTime = totalTime;
+        mStartTime = startTime;
+        mFinishTime = finishTime;
     }
 
     public String getName() {
@@ -68,26 +68,29 @@ public class Route_sql extends Model {
         mLocation = location;
     }
 
-    public double getDistance() {
+    public Number getDistance() {
         return mDistance;
     }
 
-    public void setDistance(long distance) {
+    public void setDistance(Number distance) {
         mDistance = distance;
     }
 
-    public double getTotalTime() {
-        return mTotalTime;
+    public Date getStartTime() {
+        return mStartTime;
     }
 
-    public void setTotalTime(long totalTime) {
-        mTotalTime = totalTime;
+    public void setStartTime(Date startTime) {
+        mStartTime = startTime;
     }
 
-    public int getMapId() { return mMapId; }
+    public Date getFinishTime() {
+        return mFinishTime;
+    }
 
-    public void setMapId(int mapId) { mMapId = mapId; }
-
+    public void setFinishTime(Date finishTime) {
+        mFinishTime = finishTime;
+    }
 
     public static List<Route_sql> all(){
         return new Select()

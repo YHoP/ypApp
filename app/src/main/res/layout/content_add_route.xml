@@ -25,9 +25,11 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/imgRoute">
+        android:layout_below="@+id/imgRoute"
+        android:id="@+id/linearLayout_h"
+        android:layout_alignParentBottom="false">
 
         <LinearLayout
             android:orientation="vertical"
@@ -115,33 +117,45 @@
                 android:ems="10"
                 android:hint="10.3"
                 android:id="@+id/editDistance"
-                android:gravity="top"/>
+                android:gravity="top" />
 
-            <EditText
+            <DatePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:ems="10"
                 android:id="@+id/editDate"
-                android:gravity="top"/>
+                android:gravity="top"
+                android:endYear="2015"
+                android:datePickerMode="spinner"/>
 
-            <EditText
+            <TimePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="time"
-                android:ems="10"
                 android:id="@+id/editStartTime"
-                android:gravity="top"/>
+                android:gravity="top"
+                android:timePickerMode="spinner"/>
 
-            <EditText
+            <TimePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="time"
-                android:ems="10"
                 android:id="@+id/editFinishTime"
-                android:gravity="top"/>
+                android:gravity="top"
+                android:timePickerMode="spinner"/>
 
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/btnSubmit"
+        android:layout_below="@+id/linearLayout_h"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>

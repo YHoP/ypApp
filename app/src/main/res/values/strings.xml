@@ -2,16 +2,20 @@
     <string name="parse_app_id">7n3C6kPqx9AEhpeBz8RAcrKMQY3A7pDEoNKHmr8H</string>
     <string name="parse_client_key">y9jNTwNEzswfnkWeP6KaPqgt7muiDA1k7q1OUdGB</string>
     <string name="app_name">ypApp</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
-    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_scrolling">Scrolling</string>
+    <string name="title_activity_user">User</string>
+    <string name="title_activity_route">Route</string>
+    <string name="title_activity_add_route">New Route</string>
     <string name="title_activity_maps">Map</string>
+    <string name="action_friend">Friends</string>
     <string name="action_web">Strava Heat Map</string>
     <string name="action_maps">Google Maps</string>
+    <string name="action_logout">Log out</string>
     <string name="location">"Location"</string>
     <string name="sign_up">" Sign Up "</string>
     <string name="login">" Log in "</string>
     <string name="succeed">Succeed</string>
     <string name="fail">Fail</string>
-    <string name="title_activity_route">RouteActivity</string>
+
 </resources>

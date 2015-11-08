@@ -1,5 +1,6 @@
 package com.epicodus.ypapp.models;
 
+import com.epicodus.ypapp.ui.MainActivity;
 import com.parse.ParseObject;
 
 import java.util.Date;
@@ -18,7 +19,13 @@ public class Route {
         mRouteObject.put("distance", distance);
         mRouteObject.put("startTime", startTime);
         mRouteObject.put("finishTime", finishTime);
+        mRouteObject.put("user", MainActivity.mUserName);
         mRouteObject.saveInBackground();
+
+    }
+
+    public  String getId(){
+        return mRouteObject.getObjectId();
     }
 
     public String getName() {

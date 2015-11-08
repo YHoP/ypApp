@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.txtLocation) TextView mTxtLocation;
     @Bind(R.id.txtLastRun) TextView mTxtLastRun;
     @Bind(R.id.listRoute) ListView mListRoute;
+    @Bind(R.id.imgUser) ImageView mUserImage;
 
     ArrayList<String> mRouteName;
     ArrayAdapter mArrayAdapter;
@@ -64,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             } else {
                 mUserName = mCurrentuser.getString("username");
+
                 Toast.makeText(this, "Hello " + mUserName, Toast.LENGTH_LONG).show();
 
                 mTxtUserName.setText(mUserName);
+                mTxtLocation.setText(mCurrentuser.getString("location"));
 
             }
         }

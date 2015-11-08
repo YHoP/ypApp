@@ -8,9 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.epicodus.ypapp.models.User;
 import com.epicodus.ypapp.R;
-import com.epicodus.ypapp.models.Route;
+import com.epicodus.ypapp.models.Route_sql;
+import com.epicodus.ypapp.models.User_sql;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,9 @@ import java.util.List;
 public class UserAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<User> mUsers;
+    private ArrayList<User_sql> mUsers;
 
-    public UserAdapter(Context context, ArrayList<User> users) {
+    public UserAdapter(Context context, ArrayList<User_sql> users) {
         mContext = context;
         mUsers = users;
     }
@@ -54,7 +54,7 @@ public class UserAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.user_list_item, null);
             holder = new ViewHolder();
             holder.userImage = (ImageView) convertView.findViewById(R.id.userImage);
-            holder.userNameText = (TextView) convertView.findViewById(R.id.userNameText);
+            holder.userNameText = (TextView) convertView.findViewById(R.id.txtUserName);
             holder.locationText = (TextView) convertView.findViewById(R.id.locationText);
             holder.routeCountText = (TextView) convertView.findViewById(R.id.routeCountText);
 
@@ -63,10 +63,10 @@ public class UserAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        User user = mUsers.get(position);
-        List<Route> routes = user.getRoutes();
+        User_sql user = mUsers.get(position);
+        List<Route_sql> routes = user.getRoutes();
 
-        holder.userImage.setImageResource(user.getImageId());
+//        holder.userImage.setImageResource(user.getImageId());
         holder.userNameText.setText(user.getUserName());
         holder.locationText.setText(user.getLocation());
         holder.routeCountText.setText(String.valueOf(routes.size()));

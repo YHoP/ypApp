@@ -13,20 +13,59 @@
     tools:showIn="@layout/activity_main"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/imgUser"
+        android:src="@android:drawable/ic_menu_camera"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtName"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imgUser"
+        android:text="User Name"
+        android:textSize="26sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/imgUser"
+        android:layout_above="@+id/listRoute"
+        android:layout_below="@+id/txtName">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txtLocation"
+            android:text="City \n Portland, OR"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txtLastRun"
+            android:text="Last Run \n 3 days ago"
+            android:gravity="center"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@android:id/list"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"/>
+        android:id="@+id/listRoute"
+        android:layout_below="@+id/imgUser"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@android:id/empty"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="No data to display"
-        android:textSize="24sp"/>
 </RelativeLayout>
 <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/res/layout/content_main.xml -->
