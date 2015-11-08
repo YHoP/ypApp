@@ -132,7 +132,7 @@ public class AddRouteActivity extends AppCompatActivity {
 
                 byte[] byteArray = stream.toByteArray();
 
-                ParseFile file = new ParseFile("image.png", byteArray);
+                ParseFile file = new ParseFile("image.jpeg", byteArray);
 
                 ParseObject object = new ParseObject("RouteImage");
                 object.put("image", file);
@@ -145,6 +145,7 @@ public class AddRouteActivity extends AppCompatActivity {
                     public void done(com.parse.ParseException e) {
                         if( e == null) {
                             Log.i("Save image", "Succeed");
+
                         } else {
                             Toast.makeText(getApplication().getBaseContext(), "Error! Please try again", Toast.LENGTH_LONG).show();
                         }
