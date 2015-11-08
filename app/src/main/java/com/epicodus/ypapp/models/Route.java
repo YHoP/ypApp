@@ -13,6 +13,7 @@ public class Route {
     ParseObject mRouteObject;
 
     public Route(String name, String location, Number distance, Date startTime, Date finishTime){
+
         mRouteObject = new ParseObject("Routes");
         mRouteObject.put("name", name);
         mRouteObject.put("location", location);
@@ -22,10 +23,11 @@ public class Route {
         mRouteObject.put("user", MainActivity.mUserName);
         mRouteObject.saveInBackground();
 
+        // Route_sql route_sql = new Route_sql(name, location, distance, startTime, finishTime);
     }
 
-    public  String getId(){
-        return mRouteObject.getObjectId();
+    public void setImgId(String imgId){
+        mRouteObject.put("imgId", imgId);
     }
 
     public String getName() {

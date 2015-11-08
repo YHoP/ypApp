@@ -8,6 +8,7 @@ import com.parse.ParseObject;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by YHoP on 10/27/15.
@@ -19,8 +20,6 @@ public class Route_sql extends Model {
     @Column(name = "name")
     private String mName;
 
-    @Column(name = "date")
-    private String mDate;
 
     @Column(name = "location")
     private String mLocation;
@@ -39,9 +38,8 @@ public class Route_sql extends Model {
         super();
     }
 
-    public Route_sql(String name, String date, String location, Number distance, Date startTime, Date finishTime){
+    public Route_sql(String name, String location, Number distance, Date startTime, Date finishTime){
         mName = name;
-        mDate = date;
         mLocation = location;
         mDistance = distance;
         mStartTime = startTime;
@@ -55,10 +53,6 @@ public class Route_sql extends Model {
     public void setName(String name) {
         mName = name;
     }
-
-    public String getDate() { return mDate;}
-
-    public void setDate(String date) { mDate = date; }
 
     public String getLocation() {
         return mLocation;
@@ -103,5 +97,10 @@ public class Route_sql extends Model {
                 .from(Route_sql.class)
                 .where("name = ?", name)
                 .executeSingle();
+    }
+
+    public static long getTimeDiff(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
     }
 }
