@@ -30,6 +30,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String mUserName;
+    ParseUser mCurrentuser;
+
     @Bind(R.id.txtName) TextView mTxtUserName;
     @Bind(R.id.txtLocation) TextView mTxtLocation;
     @Bind(R.id.txtLastRun) TextView mTxtLastRun;
@@ -55,21 +58,22 @@ public class MainActivity extends AppCompatActivity {
             goToLoginActivity();
             finish();
         } else {
-            ParseUser currentUser = ParseUser.getCurrentUser();
-            if (currentUser == null) {
+            mCurrentuser = ParseUser.getCurrentUser();
+            if (mCurrentuser == null) {
                 goToLoginActivity();
                 finish();
             } else {
-                String userName = currentUser.getString("username");
-                Toast.makeText(this, "Hello " + userName, Toast.LENGTH_LONG).show();
+                mUserName = mCurrentuser.getString("username");
+                Toast.makeText(this, "Hello " + mUserName, Toast.LENGTH_LONG).show();
 
-                mTxtUserName.setText(userName);
+                mTxtUserName.setText(mUserName);
 
             }
         }
 
 
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Routes");
+        query.whereEqualTo("user", mUserName);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> allRoutes, ParseException e) {
                 if (e == null) {
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddRouteActivity.class);
+                intent.putExtra("userName", mUserName);
                 startActivity(intent);
             }
         });
@@ -113,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+//            case  R.id.action_friend:
+//                Intent friendIntent = new Intent(this, FriendActivity.class);
+//                startActivity(friendIntent);
+//                break;
             case  R.id.action_web:
                 Uri heatMap = Uri.parse("http://labs.strava.com/heatmap/");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, heatMap);
@@ -121,6 +130,11 @@ public class MainActivity extends AppCompatActivity {
             case  R.id.action_maps:
                 Intent mapIntent = new Intent(this, MapsActivity.class);
                 startActivity(mapIntent);
+                break;
+            case  R.id.action_logout:
+                ParseUser.logOut();
+                Intent logoutIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(logoutIntent);
                 break;
         }
         return super.onOptionsItemSelected(item);
