@@ -3,6 +3,7 @@
     <string name="parse_client_key">y9jNTwNEzswfnkWeP6KaPqgt7muiDA1k7q1OUdGB</string>
     <string name="app_name">ypApp</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_friend">Friend</string>
     <string name="title_activity_scrolling">Scrolling</string>
     <string name="title_activity_user">User</string>
     <string name="title_activity_route">Route</string>
@@ -17,5 +18,6 @@
     <string name="login">" Log in "</string>
     <string name="succeed">Succeed</string>
     <string name="fail">Fail</string>
+    <string name="StravaHeatMapLink">http://labs.strava.com/heatmap/#13/-122.6731804/45.5093549/yellow/run</string>
 
 </resources>
