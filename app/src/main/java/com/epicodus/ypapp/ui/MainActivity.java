@@ -4,26 +4,51 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.ypapp.R;
+import com.parse.FindCallback;
 import com.parse.ParseAnonymousUtils;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+
+    @Bind(R.id.txtName) TextView mTxtUserName;
+    @Bind(R.id.txtLocation) TextView mTxtLocation;
+    @Bind(R.id.txtLastRun) TextView mTxtLastRun;
+    @Bind(R.id.listRoute) ListView mListRoute;
+
+    ArrayList<String> mRouteName;
+    ArrayAdapter mArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mListRoute = (ListView) findViewById(R.id.listRoute);
+        mRouteName = new ArrayList<String>();
+        mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mRouteName);
 
         if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
 
@@ -35,18 +60,40 @@ public class MainActivity extends AppCompatActivity {
                 goToLoginActivity();
                 finish();
             } else {
-                Toast.makeText(this, currentUser.getString("username"), Toast.LENGTH_LONG).show();
+                String userName = currentUser.getString("username");
+                Toast.makeText(this, "Hello " + userName, Toast.LENGTH_LONG).show();
+
+                mTxtUserName.setText(userName);
+
             }
         }
 
 
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Routes");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> allRoutes, ParseException e) {
+                if (e == null) {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+                    for(ParseObject route : allRoutes){
+                        mRouteName.add(route.getString("name"));
+                    }
+                    mListRoute.setAdapter(mArrayAdapter);
+
+                } else {
+                    Toast.makeText(MainActivity.this, "Error - please try again", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addNew);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, AddRouteActivity.class);
+                startActivity(intent);
             }
         });
     }
