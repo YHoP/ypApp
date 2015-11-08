@@ -122,12 +122,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-//            case  R.id.action_friend:
-//                Intent friendIntent = new Intent(this, FriendActivity.class);
-//                startActivity(friendIntent);
-//                break;
+            case  R.id.action_friend:
+                Intent friendIntent = new Intent(this, FriendActivity.class);
+                startActivity(friendIntent);
+                break;
             case  R.id.action_web:
-                Uri heatMap = Uri.parse("http://labs.strava.com/heatmap/");
+                Uri heatMap = Uri.parse(getString(R.string.StravaHeatMapLink));
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, heatMap);
                 startActivity(webIntent);
                 break;

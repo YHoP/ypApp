@@ -39,6 +39,7 @@
         android:id="@+id/txtUsername"
         android:layout_below="@+id/imgLogo"
         android:hint="username"
+        android:inputType="textCapWords"
         android:layout_alignLeft="@+id/txtPassword"
         android:layout_alignStart="@+id/txtPassword"
         android:layout_alignRight="@+id/txtPassword"

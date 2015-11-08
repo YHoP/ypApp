@@ -350,6 +350,11 @@
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="StravaHeatMapLink">http://labs.strava.com/heatmap/#15/-122.6731804/45.5093549/yellow/run</string>
+    <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
+    <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -475,6 +480,7 @@
     <eat-comment/>
     <string name="succeed">Succeed</string>
     <string name="title_activity_add_route">New Route</string>
+    <string name="title_activity_friend">Friend</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_route">Route</string>

@@ -81,6 +81,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.ypapp.ui.MainActivity" />
         </activity>
+        <activity
+            android:name="com.epicodus.ypapp.ui.FriendActivity"
+            android:label="@string/title_activity_friend"
+            android:parentActivityName="com.epicodus.ypapp.ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.ypapp.ui.MainActivity" />
+        </activity>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
