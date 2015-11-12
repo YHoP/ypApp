@@ -19,5 +19,9 @@
     <string name="succeed">Succeed</string>
     <string name="fail">Fail</string>
     <string name="StravaHeatMapLink">http://labs.strava.com/heatmap/#13/-122.6731804/45.5093549/yellow/run</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

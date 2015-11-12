@@ -83,4 +83,14 @@
         android:textColor="#5ab1d8"
         android:textSize="20sp"/>
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnStravaLogIn"
+        android:layout_below="@+id/txtSubmit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/login_with_strava"
+        android:onClick="loginWithStrava"/>
+
 </RelativeLayout>
