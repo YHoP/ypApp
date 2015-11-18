@@ -1,7 +1,6 @@
 package com.epicodus.ypapp.ui;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -14,26 +13,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.epicodus.ypapp.R;
-import com.epicodus.ypapp.models.User;
-import com.epicodus.ypapp.models.User_sql;
-import com.squareup.okhttp.Authenticator;
-import com.squareup.okhttp.Credentials;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.Proxy;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,6 +33,7 @@ import javastrava.api.v3.auth.impl.retrofit.AuthorisationServiceImpl;
 import javastrava.api.v3.auth.model.Token;
 import javastrava.api.v3.model.StravaAthlete;
 import javastrava.api.v3.service.Strava;
+import sql.User;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -209,8 +201,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //        view.getContext().startActivity(stravaIntent);
 //        Log.i("view contaxt", view.getContext().toString());
 
-        Intent stravaIntent = new Intent(this, WebViewActivity.class);
-        startActivity(stravaIntent);
+//        Intent stravaIntent = new Intent(this, WebViewActivity.class);
+//        startActivity(stravaIntent);
 
     }
 
@@ -218,12 +210,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String username = String.valueOf(mTxtUsername.getText());
         String password = String.valueOf(mTxtPassword.getText());
         if(signUpModeActive) {
-            User user = new User(username, password);
-            User_sql user_sql = new User_sql(username, password);
+            com.epicodus.ypapp.models.User user = new com.epicodus.ypapp.models.User(username, password);
+            User user_ = new User(username, password);
             user.signUp();
             goToMainActivity();
         } else {
-            User.login(username, password);
+            com.epicodus.ypapp.models.User.login(username, password);
             goToMainActivity();
         }
 

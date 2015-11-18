@@ -9,11 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
-import com.epicodus.ypapp.models.Route_sql;
-import com.epicodus.ypapp.models.User_sql;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import sql.Route;
+import sql.User;
 
 /**
  * Created by YHoP on 11/3/15.
@@ -21,9 +22,9 @@ import java.util.List;
 public class UserAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<User_sql> mUsers;
+    private ArrayList<User> mUsers;
 
-    public UserAdapter(Context context, ArrayList<User_sql> users) {
+    public UserAdapter(Context context, ArrayList<User> users) {
         mContext = context;
         mUsers = users;
     }
@@ -63,8 +64,8 @@ public class UserAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        User_sql user = mUsers.get(position);
-        List<Route_sql> routes = user.getRoutes();
+        User user = mUsers.get(position);
+        List<Route> routes = user.getRoutes();
 
 //        holder.userImage.setImageResource(user.getImageId());
         holder.userNameText.setText(user.getUserName());

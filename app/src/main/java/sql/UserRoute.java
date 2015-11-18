@@ -1,4 +1,4 @@
-package com.epicodus.ypapp.models;
+package sql;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -12,24 +12,24 @@ import com.activeandroid.annotation.Table;
 @Table(name = "User_Route", id = "_id")
 public class UserRoute extends Model{
     @Column(name = "Runner")
-    public User_sql mUser;
+    public User mUser;
 
     @Column(name = "Route")
-    public Route_sql mRoute;
+    public Route mRoute;
 
     public UserRoute() {super();}
 
-    public UserRoute(User_sql user, Route_sql route){
+    public UserRoute(User user, Route route){
         super();
         mUser = user;
         mRoute = route;
     }
 
-    public User_sql getUser() {
+    public User getUser() {
         return mUser;
     }
 
-    public Route_sql getRoute() {
+    public Route getRoute() {
         return mRoute;
     }
 }

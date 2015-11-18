@@ -1,9 +1,6 @@
-package com.epicodus.ypapp;
+package com.epicodus.ypapp.utils;
 
-        import retrofit.http.GET;
-        import retrofit.http.Path;
-
-/**
+        /**
  * Created by Guest on 11/11/15.
  */
 public interface GitHubService {

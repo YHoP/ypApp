@@ -32,6 +32,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     public static String mUserName;
+    public static int mRouteCount;
     ParseUser mCurrentuser;
 
     @Bind(R.id.txtName) TextView mTxtUserName;
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         mRouteName.add(route.getString("name"));
                     }
                     mListRoute.setAdapter(mArrayAdapter);
+                    mRouteCount = allRoutes.size();
 
                 } else {
                     Toast.makeText(MainActivity.this, "Error - please try again", Toast.LENGTH_LONG).show();
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddRouteActivity.class);
                 intent.putExtra("userName", mUserName);
+                intent.putExtra("routeCount", mRouteCount);
                 startActivity(intent);
             }
         });

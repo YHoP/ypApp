@@ -1,4 +1,4 @@
-package com.epicodus.ypapp.parse;
+package com.epicodus.ypapp.utils;
 
 /**
  * Created by YHoP on 11/6/15.

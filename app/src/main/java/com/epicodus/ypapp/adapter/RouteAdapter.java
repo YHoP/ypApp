@@ -9,9 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
-import com.epicodus.ypapp.models.Route_sql;
 
 import java.util.ArrayList;
+
+import sql.Route;
 
 /**
  * Created by YHoP on 11/3/15.
@@ -19,9 +20,9 @@ import java.util.ArrayList;
 public class RouteAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<Route_sql> mRoutes;
+    private ArrayList<Route> mRoutes;
 
-    public RouteAdapter(Context context, ArrayList<Route_sql> routes) {
+    public RouteAdapter(Context context, ArrayList<Route> routes) {
         mContext = context;
         mRoutes = routes;
     }
@@ -63,7 +64,7 @@ public class RouteAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Route_sql route = mRoutes.get(position);
+        Route route = mRoutes.get(position);
 
 //        holder.routeMapImage.setImageResource(route.getMapId());
         holder.routeText.setText(route.getName());

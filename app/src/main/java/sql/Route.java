@@ -1,4 +1,4 @@
-package com.epicodus.ypapp.models;
+package sql;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by YHoP on 10/27/15.
  */
-@Table(name = "Routes_sql", id = "_id")
-public class Route_sql extends Model {
+@Table(name = "Routes", id = "_id")
+public class Route extends Model {
     ParseObject mRouteObject;
 
     @Column(name = "name")
@@ -34,11 +34,11 @@ public class Route_sql extends Model {
     private Date mFinishTime;
 
 
-    public Route_sql(){
+    public Route(){
         super();
     }
 
-    public Route_sql(String name, String location, Number distance, Date startTime, Date finishTime){
+    public Route(String name, String location, Number distance, Date startTime, Date finishTime){
         mName = name;
         mLocation = location;
         mDistance = distance;
@@ -86,15 +86,15 @@ public class Route_sql extends Model {
         mFinishTime = finishTime;
     }
 
-    public static List<Route_sql> all(){
+    public static List<Route> all(){
         return new Select()
-                .from(Route_sql.class)
+                .from(Route.class)
                 .execute();
     }
 
-    public static Route_sql find(String name) {
+    public static Route find(String name) {
         return new Select()
-                .from(Route_sql.class)
+                .from(Route.class)
                 .where("name = ?", name)
                 .executeSingle();
     }

@@ -46,6 +46,7 @@ public class AddRouteActivity extends AppCompatActivity {
 
     Route mRoute;
     String imageId;
+    private int mRouteCount = MainActivity.mRouteCount;
 
 
     @Override
@@ -56,6 +57,7 @@ public class AddRouteActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         mBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +137,8 @@ public class AddRouteActivity extends AppCompatActivity {
                 ParseFile file = new ParseFile("image.jpeg", byteArray);
 
                 ParseObject object = new ParseObject("RouteImage");
+                String imageId = "id_"+ (mRouteCount+1);
+                object.put("imageId", imageId );
                 object.put("image", file);
                 ParseACL parseACL = new ParseACL();
                 parseACL.setPublicReadAccess(true);

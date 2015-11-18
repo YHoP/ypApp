@@ -1,4 +1,4 @@
-package com.epicodus.ypapp.models;
+package sql;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -13,11 +13,11 @@ import java.util.List;
  * Created by YHoP on 11/6/15.
  */
 
-@Table(name = "Users_sql", id = "_id")
-public class User_sql extends Model{
+@Table(name = "Users", id = "_id")
+public class User extends Model{
     ParseUser mParseUser;
 
-    @Column(name = "userName")
+    @Column(name = "name")
     private String mUserName;
 
     @Column(name = "password")
@@ -29,11 +29,11 @@ public class User_sql extends Model{
     @Column(name = "imageId")
     private int mImageId;
 
-    public User_sql(){
+    public User(){
         super();
     }
 
-    public User_sql(String username, String password) {
+    public User(String username, String password) {
         super();
         mUserName = username;
         mPassword = password;
@@ -67,29 +67,29 @@ public class User_sql extends Model{
         mImageId = imageId;
     }
 
-    public static List<User_sql> all(){
+    public static List<User> all(){
         return new Select()
-                .from(User_sql.class)
+                .from(User.class)
                 .execute();
     }
 
-    public static User_sql find(String username) {
+    public static User find(String username) {
         return new Select()
-                .from(User_sql.class)
+                .from(User.class)
                 .where("Name = ?", username)
                 .executeSingle();
     }
 
-    public List<Route_sql> getRoutes(){
+    public List<Route> getRoutes(){
         List<UserRoute> joins = new Select()
                 .from(UserRoute.class)
                 .where("User = ?", this.getId())
                 .execute();
 
-        List<Route_sql> routes = new ArrayList<Route_sql>();
+        List<Route> routes = new ArrayList<Route>();
 
         for(UserRoute join : joins){
-            Route_sql route = join.getRoute();
+            Route route = join.getRoute();
             routes.add(route);
         }
         return routes;

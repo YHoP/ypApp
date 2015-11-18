@@ -23,7 +23,7 @@ public class Route {
         mRouteObject.put("user", MainActivity.mUserName);
         mRouteObject.saveInBackground();
 
-        // Route_sql route_sql = new Route_sql(name, location, distance, startTime, finishTime);
+        // Route route_sql = new Route(name, location, distance, startTime, finishTime);
     }
 
     public void setImgId(String imgId){
