@@ -9,12 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
+import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import sql.Route;
-import sql.User;
 
 /**
  * Created by YHoP on 11/3/15.
@@ -22,9 +19,9 @@ import sql.User;
 public class UserAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<User> mUsers;
+    private List<ParseUser> mUsers;
 
-    public UserAdapter(Context context, ArrayList<User> users) {
+    public UserAdapter(Context context, List<ParseUser> users) {
         mContext = context;
         mUsers = users;
     }
@@ -64,13 +61,12 @@ public class UserAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        User user = mUsers.get(position);
-        List<Route> routes = user.getRoutes();
+        ParseUser user = mUsers.get(position);
 
 //        holder.userImage.setImageResource(user.getImageId());
-        holder.userNameText.setText(user.getUserName());
-        holder.locationText.setText(user.getLocation());
-        holder.routeCountText.setText(String.valueOf(routes.size()));
+        holder.userNameText.setText(user.getString("username"));
+        holder.locationText.setText(user.getString("location"));
+//        holder.routeCountText.setText(String.valueOf(routes.size()));
 
         return convertView;
     }

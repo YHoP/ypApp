@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
+import com.parse.ParseObject;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import sql.Route;
 
 /**
  * Created by YHoP on 11/3/15.
@@ -20,11 +20,11 @@ import sql.Route;
 public class RouteAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<Route> mRoutes;
+    private List<ParseObject> mAllRoutes;
 
-    public RouteAdapter(Context context, ArrayList<Route> routes) {
+    public RouteAdapter(Context context, List<ParseObject> routes) {
         mContext = context;
-        mRoutes = routes;
+        mAllRoutes = routes;
     }
 
     public Context getContext() {
@@ -32,12 +32,12 @@ public class RouteAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return mRoutes.size();
+        return mAllRoutes.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mRoutes.get(position);
+        return mAllRoutes.get(position);
     }
 
     @Override
@@ -64,12 +64,14 @@ public class RouteAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Route route = mRoutes.get(position);
+        ParseObject route = mAllRoutes.get(position);
 
-//        holder.routeMapImage.setImageResource(route.getMapId());
-        holder.routeText.setText(route.getName());
-        holder.dateText.setText(route.getLocation());
-        holder.distanceText.setText(String.valueOf(route.getDistance()));
+//        holder.routeMapImage.setImageResource(route.getParseFile("image"));
+//        need to reach how to get Parse image image file
+
+        holder.routeText.setText(route.getString("name"));
+        holder.dateText.setText(route.getString("date"));
+        holder.distanceText.setText(String.valueOf(route.getString("distance")));
 //        holder.totalTimeText.setText(String.valueOf(route.getTotalTime()));
 //        holder.paceText.setText(String.valueOf(route.getTotalTime()/route.getDistance()));
 

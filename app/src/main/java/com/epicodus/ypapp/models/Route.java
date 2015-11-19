@@ -1,7 +1,12 @@
 package com.epicodus.ypapp.models;
 
-import com.epicodus.ypapp.ui.MainActivity;
+import android.util.Log;
+
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.Date;
 
@@ -12,6 +17,10 @@ import java.util.Date;
 public class Route {
     ParseObject mRouteObject;
 
+    public Route(){
+        mRouteObject = new ParseObject("Routes");
+    }
+
     public Route(String name, String location, Number distance, Date startTime, Date finishTime){
 
         mRouteObject = new ParseObject("Routes");
@@ -20,10 +29,14 @@ public class Route {
         mRouteObject.put("distance", distance);
         mRouteObject.put("startTime", startTime);
         mRouteObject.put("finishTime", finishTime);
-        mRouteObject.put("user", MainActivity.mUserName);
-        mRouteObject.saveInBackground();
+        mRouteObject.put("user", ParseUser.getCurrentUser().get("username"));
+        save(mRouteObject);
 
         // Route route_sql = new Route(name, location, distance, startTime, finishTime);
+    }
+
+    public ParseObject getRouteObject(){
+        return mRouteObject;
     }
 
     public void setImgId(String imgId){
@@ -58,7 +71,7 @@ public class Route {
         return mRouteObject.getNumber("distance");
     }
 
-    public void setDistance(long distance) {
+    public void setDistance(Number distance) {
         mRouteObject.put("distance", distance);
     }
 
@@ -70,8 +83,29 @@ public class Route {
         mRouteObject.put("startTime", startTime);
     }
 
+    public void setFinishTime(Date finishTime) {
+        mRouteObject.put("finishTime", finishTime);
+    }
+
     public Date getFinishTime() {
         return mRouteObject.getDate("finishTime");
     }
 
+    public ParseFile getImageFile() {
+        return mRouteObject.getParseFile("image");
+    }
+
+    public void save(ParseObject parseObject){
+        parseObject.saveInBackground(new SaveCallback(){
+            @Override
+            public void done(ParseException e) {
+                if( e == null) {
+                    Log.i("Save RouteObject", "Succeed");
+
+                } else {
+                    Log.i("Save RouteObject", "Failed");
+                }
+            }
+        });
+    }
 }

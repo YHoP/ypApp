@@ -1,6 +1,7 @@
 package com.epicodus.ypapp.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.ypapp.R;
+import com.epicodus.ypapp.adapter.RouteAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
@@ -31,8 +33,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String mUserName;
-    public static int mRouteCount;
+    private SharedPreferences mPreferences = getApplicationContext().getSharedPreferences("YpApp", MODE_PRIVATE);;
+    private String mUserName;
     ParseUser mCurrentuser;
 
     @Bind(R.id.txtName) TextView mTxtUserName;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> mRouteName;
     ArrayAdapter mArrayAdapter;
+    private static RouteAdapter mRouteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 mUserName = mCurrentuser.getString("username");
 
+                SharedPreferences.Editor editor = mPreferences.edit();
+                editor.putString("username", mUserName);
+                editor.commit();
+
                 Toast.makeText(this, "Hello " + mUserName, Toast.LENGTH_LONG).show();
 
                 mTxtUserName.setText(mUserName);
@@ -86,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
                     for(ParseObject route : allRoutes){
                         mRouteName.add(route.getString("name"));
                     }
-                    mListRoute.setAdapter(mArrayAdapter);
-                    mRouteCount = allRoutes.size();
+                    mRouteAdapter = new RouteAdapter(MainActivity.this, allRoutes);
+                    mListRoute.setAdapter(mRouteAdapter);
 
                 } else {
                     Toast.makeText(MainActivity.this, "Error - please try again", Toast.LENGTH_LONG).show();
@@ -103,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddRouteActivity.class);
-                intent.putExtra("userName", mUserName);
-                intent.putExtra("routeCount", mRouteCount);
+//                intent.putExtra("userName", mUserName);
+//                intent.putExtra("routeCount", mRouteCount);
                 startActivity(intent);
             }
         });

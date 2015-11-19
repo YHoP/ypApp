@@ -44,8 +44,9 @@ public class AddRouteActivity extends AppCompatActivity {
     @Bind(R.id.btnSubmit) Button mBtnSubmit;
     @Bind(R.id.imgRoute) ImageView mImgRoute;
 
-    Route mRoute;
-    String imageId;
+    private Route mRoute;
+    private String imageId;
+    private ParseObject mRouteObject;
     private int mRouteCount = MainActivity.mRouteCount;
 
 
@@ -71,7 +72,17 @@ public class AddRouteActivity extends AppCompatActivity {
                 Date startTime = timeFormatter(mEditStartTime.getText().toString());
                 Date finishTime = timeFormatter(mEditFinishTime.getText().toString());
 
-                mRoute = new Route(name, location, distance, startTime, finishTime);
+                if(mRoute == null){
+                    mRoute = new Route(name, location, distance, startTime, finishTime);
+                    mRouteObject = mRoute.getRouteObject();
+                } else {
+                    mRoute.setName(name);
+                    mRoute.setLocation(location);
+                    mRoute.setDistance(distance);
+                    mRoute.setStartTime(startTime);
+                    mRoute.setFinishTime(finishTime);
+                    mRoute.save(mRouteObject);
+                }
 
                 // mEditStartTime.setIs24HourView(true);
                 // mEditFinishTime.setIs24HourView(true);
@@ -136,15 +147,17 @@ public class AddRouteActivity extends AppCompatActivity {
 
                 ParseFile file = new ParseFile("image.jpeg", byteArray);
 
-                ParseObject object = new ParseObject("RouteImage");
-                String imageId = "id_"+ (mRouteCount+1);
-                object.put("imageId", imageId );
-                object.put("image", file);
+                if(mRoute == null){
+                    mRoute = new Route();
+                    mRouteObject = mRoute.getRouteObject();
+                }
+
+                mRouteObject.put("image", file);
                 ParseACL parseACL = new ParseACL();
                 parseACL.setPublicReadAccess(true);
-                object.setACL(parseACL);
+                mRouteObject.setACL(parseACL);
 
-                object.saveInBackground(new SaveCallback() {
+                mRouteObject.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(com.parse.ParseException e) {
                         if( e == null) {

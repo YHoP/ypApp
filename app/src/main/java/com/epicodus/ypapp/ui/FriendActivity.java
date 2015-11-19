@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.epicodus.ypapp.R;
+import com.epicodus.ypapp.adapter.UserAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -27,6 +28,7 @@ public class FriendActivity extends AppCompatActivity {
     @Bind(R.id.listFriend) ListView mListFriend;
     ArrayList<String> mFriendName;
     ArrayAdapter<String> mArrayAdapter;
+    private UserAdapter mUserAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +47,13 @@ public class FriendActivity extends AppCompatActivity {
 
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
-            public void done(List<ParseUser> objects, ParseException e) {
+            public void done(List<ParseUser> userFriends, ParseException e) {
                 if (e == null) {
-                    if (objects.size() > 0) {
-                        for (ParseUser user : objects) {
+                    if (userFriends.size() > 0) {
+                        for (ParseUser user : userFriends) {
                             mFriendName.add(user.getUsername());
                         }
+                        mUserAdapter = new UserAdapter(FriendActivity.this, userFriends);
                         mListFriend.setAdapter(mArrayAdapter);
                     }
                 }
