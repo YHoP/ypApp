@@ -1,6 +1,8 @@
 package com.epicodus.ypapp.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 import java.util.List;
 
 
-/**
- * Created by YHoP on 11/3/15.
- */
 public class RouteAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<ParseObject> mAllRoutes;
+    private Bitmap mImage;
 
     public RouteAdapter(Context context, List<ParseObject> routes) {
         mContext = context;
@@ -66,9 +69,18 @@ public class RouteAdapter extends BaseAdapter {
 
         ParseObject route = mAllRoutes.get(position);
 
-//        holder.routeMapImage.setImageResource(route.getParseFile("image"));
-//        need to reach how to get Parse image image file
+        ParseFile file = (ParseFile)route.get("image");
 
+        file.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                if (e == null){
+                    mImage = BitmapFactory.decodeByteArray(data, 0, data.length);
+                }
+            }
+        });
+
+        holder.routeMapImage.setImageBitmap(mImage);
         holder.routeText.setText(route.getString("name"));
         holder.dateText.setText(route.getString("date"));
         holder.distanceText.setText(String.valueOf(route.getString("distance")));
@@ -86,4 +98,7 @@ public class RouteAdapter extends BaseAdapter {
         TextView totalTimeText;
         TextView paceText;
     }
+
+
+
 }
