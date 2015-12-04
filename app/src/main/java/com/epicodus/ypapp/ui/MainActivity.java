@@ -1,7 +1,6 @@
 package com.epicodus.ypapp.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -33,7 +32,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SharedPreferences mPreferences = getApplicationContext().getSharedPreferences("YpApp", MODE_PRIVATE);;
     private String mUserName;
     ParseUser mCurrentuser;
 
@@ -70,11 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             } else {
                 mUserName = mCurrentuser.getString("username");
-
-                SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString("username", mUserName);
-                editor.commit();
-
                 Toast.makeText(this, "Hello " + mUserName, Toast.LENGTH_LONG).show();
 
                 mTxtUserName.setText(mUserName);

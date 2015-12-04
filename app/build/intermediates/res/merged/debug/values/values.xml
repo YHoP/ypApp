@@ -45,9 +45,9 @@
     <color name="button_material_light">#ffd6d7d7</color>
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#40ffa9</color>
+    <color name="colorPrimary">#5dd958</color>
+    <color name="colorPrimaryDark">#309f3e</color>
     <!-- From: file:/Users/YHoP/AndroidStudioProjects/ypApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.3.0/res/values/base_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>

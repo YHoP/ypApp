@@ -15,35 +15,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.epicodus.ypapp.R;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import javastrava.api.v3.auth.AuthorisationService;
-import javastrava.api.v3.auth.impl.retrofit.AuthorisationServiceImpl;
-import javastrava.api.v3.auth.model.Token;
-import javastrava.api.v3.model.StravaAthlete;
-import javastrava.api.v3.service.Strava;
 import sql.User;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private int stravaClientID = 8394;
-    private String stravaClientSecret = "331b1f0d78a9d41311e865baa9e1fdfd2656a795";
-    private String stravaCallBackDomain = "http://localhost:4200";
-    private String URL = "https://www.strava.com/oauth/authorize?client_id=" + stravaClientID +
-          "&response_type=code&redirect_uri=" + stravaCallBackDomain + "&approval_prompt=force";
-    private String CODE = "234b31220041e56c4ee53a65be11e0a03266b20e";
-
 
     @Bind(R.id.txtUsername) EditText mTxtUsername;
     @Bind(R.id.txtPassword) EditText mTxtPassword;
@@ -70,10 +47,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mRelativeLayout.setOnClickListener(this);
 
         mBtnStravaLogin.setOnClickListener(this);
-
-
-
-
     }
 
     @Override
@@ -95,114 +68,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             imm.hideSoftInputFromInputMethod(getCurrentFocus().getWindowToken(), 0);
 
         }
-
-    }
-
-
-
-
-
-    public class StravaAPI {
-
-        AuthorisationService service = new AuthorisationServiceImpl();
-        Token token = service.tokenExchange(stravaClientID, stravaClientSecret, CODE);
-        Strava strava = new Strava(token);
-        StravaAthlete athlete = strava.getAthlete(0);
-
-
-       OkHttpClient client = new OkHttpClient();
-
-        String doGetRequest(String url) throws IOException {
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-            Response responses = null;
-
-            try {
-                responses = client.newCall(request).execute();
-                Log.i("Get response: ", "Successful");
-            } catch (IOException e) {
-                Log.i("Get resposne: ", "Failed");
-                e.printStackTrace();
-            }
-
-
-            String urlResponse = responses.body().toString();
-            JSONObject jsonObject = null;
-            String jsonName = null;
-
-            try {
-                jsonObject = new JSONObject(urlResponse);
-                jsonName = jsonObject.getString("athlete");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            Log.i("Response: ", jsonName);
-            return urlResponse;
-        }
-
-        public final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-        String doPostRequest(String url, String json) throws IOException {
-            RequestBody body = RequestBody.create(JSON, json);
-                Request request = new Request.Builder()
-                        .url(url)
-                        .post(body)
-                        .build();
-            Response response = client.newCall(request).execute();
-            return response.body().toString();
-        }
-    }
-
-
-//    public void loginWithStrava (View view) throws IOException {
-//        StravaAPI stravaAPI = new StravaAPI();
-//        String getResponse = stravaAPI.doGetRequest(URL);
-//        Log.i("Response: ", getResponse);
-//
-//        String postResponse = stravaAPI.doPostRequest("", getResponse);
-//        Log.i("Response 2 : ", postResponse);
-//
-//    }
-
-
-
-
-//    public void loginWithStrava (View view) throws IOException {
-//        try {
-//            StravaAPI(URL);
-//            Log.e("Login", "Successful");
-//        } catch (Exception e) {
-//            Log.e("Login", "Failed");
-//            e.printStackTrace();
-//        }
-//    }
-
-
-
-
-//    public void run() throws Exception {
-//
-//        Request request = new Request.Builder()
-//                .url("https://www.strava.com/oauth/authorize?client_id=" + stravaClientID +
-//           "&response_type=code&redirect_uri=" + stravaCallBackDomain + "&approval_prompt=force")
-//                .build();
-//        Response response = client.newCall(request).execute();
-//        if(!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-//
-//        Log.i("URL: ", response.body().toString());
-//    }
-
-
-    public void loginWithStrava (View view){
-//        Uri uriUrl = Uri.parse(URL);
-//        Intent stravaIntent = new Intent(Intent.ACTION_VIEW, uriUrl);
-//        view.getContext().startActivity(stravaIntent);
-//        Log.i("view contaxt", view.getContext().toString());
-
-//        Intent stravaIntent = new Intent(this, WebViewActivity.class);
-//        startActivity(stravaIntent);
 
     }
 

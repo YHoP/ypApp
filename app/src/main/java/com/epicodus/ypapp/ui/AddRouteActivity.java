@@ -16,10 +16,8 @@ import android.widget.Toast;
 
 import com.epicodus.ypapp.R;
 import com.epicodus.ypapp.models.Route;
-import com.parse.ParseACL;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -45,9 +43,8 @@ public class AddRouteActivity extends AppCompatActivity {
     @Bind(R.id.imgRoute) ImageView mImgRoute;
 
     private Route mRoute;
-    private String imageId;
+    private Bitmap mBitmap;
     private ParseObject mRouteObject;
-    private int mRouteCount = MainActivity.mRouteCount;
 
 
     @Override
@@ -72,17 +69,7 @@ public class AddRouteActivity extends AppCompatActivity {
                 Date startTime = timeFormatter(mEditStartTime.getText().toString());
                 Date finishTime = timeFormatter(mEditFinishTime.getText().toString());
 
-                if(mRoute == null){
-                    mRoute = new Route(name, location, distance, startTime, finishTime);
-                    mRouteObject = mRoute.getRouteObject();
-                } else {
-                    mRoute.setName(name);
-                    mRoute.setLocation(location);
-                    mRoute.setDistance(distance);
-                    mRoute.setStartTime(startTime);
-                    mRoute.setFinishTime(finishTime);
-                    mRoute.save(mRouteObject);
-                }
+                Route route = new Route(name, location, distance, startTime, finishTime, bitMapToParseFile(mBitmap));
 
                 // mEditStartTime.setIs24HourView(true);
                 // mEditFinishTime.setIs24HourView(true);
@@ -140,40 +127,22 @@ public class AddRouteActivity extends AppCompatActivity {
                 mImgRoute.setImageBitmap(bitmapImage);
                 Log.i("Select image: ", "Succeed");
 
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmapImage.compress(Bitmap.CompressFormat.JPEG, 20, stream);
-
-                byte[] byteArray = stream.toByteArray();
-
-                ParseFile file = new ParseFile("image.jpeg", byteArray);
-
-                if(mRoute == null){
-                    mRoute = new Route();
-                    mRouteObject = mRoute.getRouteObject();
-                }
-
-                mRouteObject.put("image", file);
-                ParseACL parseACL = new ParseACL();
-                parseACL.setPublicReadAccess(true);
-                mRouteObject.setACL(parseACL);
-
-                mRouteObject.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(com.parse.ParseException e) {
-                        if( e == null) {
-                            Log.i("Save image", "Succeed");
-
-                        } else {
-                            Toast.makeText(getApplication().getBaseContext(), "Error! Please try again", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                mBitmap = bitmapImage;
 
             } catch (IOException e) {
                 Toast.makeText(getApplication().getBaseContext(), "Error! Please try again", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }
+    }
+
+    private ParseFile bitMapToParseFile(Bitmap bitmapImage) {
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapImage.compress(Bitmap.CompressFormat.JPEG, 20, stream);
+        byte[] byteArray = stream.toByteArray();
+        ParseFile file = new ParseFile("image.jpeg", byteArray);
+        return file;
     }
 
 }

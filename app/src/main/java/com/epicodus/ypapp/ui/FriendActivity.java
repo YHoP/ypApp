@@ -42,7 +42,7 @@ public class FriendActivity extends AppCompatActivity {
         mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mFriendName);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereNotEqualTo("username", MainActivity.mUserName);
+        query.whereNotEqualTo("username", ParseUser.getCurrentUser().get("username"));
         query.addAscendingOrder("username");
 
         query.findInBackground(new FindCallback<ParseUser>() {
