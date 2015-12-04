@@ -21,7 +21,7 @@ public class Route {
         mRouteObject = new ParseObject("Routes");
     }
 
-    public Route(String name, String location, Number distance, Date startTime, Date finishTime){
+    public Route(String name, String location, Number distance, Date startTime, Date finishTime, ParseFile file){
 
         mRouteObject = new ParseObject("Routes");
         mRouteObject.put("name", name);
@@ -29,6 +29,7 @@ public class Route {
         mRouteObject.put("distance", distance);
         mRouteObject.put("startTime", startTime);
         mRouteObject.put("finishTime", finishTime);
+        mRouteObject.put("image", file);
         mRouteObject.put("user", ParseUser.getCurrentUser().get("username"));
         save(mRouteObject);
 
@@ -91,7 +92,7 @@ public class Route {
         return mRouteObject.getDate("finishTime");
     }
 
-    public ParseFile getImageFile() {
+    public ParseFile getImage() {
         return mRouteObject.getParseFile("image");
     }
 
@@ -108,4 +109,5 @@ public class Route {
             }
         });
     }
+
 }
